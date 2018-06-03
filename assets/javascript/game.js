@@ -1,28 +1,30 @@
 
-var letters= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var wins= 0;
 var losses= 0;
 var guessesLeft= 9;
 var guessesSoFar= "";
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-
-var computerChoice = letters[Math.floor(Math.random()*letters.length)];
-console.log(computerChoice);
-
-//generate random letter for computer
 document.onkeydown = function(event) {
+
     var userGuess = event.key;
-   
-// if else loop for guess
+
+    var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+
     if (userGuess === computerChoice) {
-    $("#plusWins").text("Wins: " + wins);
-    wins++;
-    
+        wins++;
+        guessesLeft= 9;
+        $("#plusWins").text(wins);
+    } else {
+        guessesLeft--;
+        $("#guessLeft").text(guessesLeft);
+        $("#guesses").text(userGuess);
     }
 };
+/*
+var newH1 = $("<H1>");
+        newH1.text(randomNumber);
+        newH1.attr("class", "text-center");
 
-
-
-//DOM modification
-$("#plusWins").text("Wins: " + wins);
-$("#plusLoss").text("Losses: " + losses);
+          $("#random-number").prepend(newH1);
+*/
