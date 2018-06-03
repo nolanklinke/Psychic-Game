@@ -29,6 +29,7 @@ function reset () {
     guessesLeft= 9;
     updateGuessesLeft();
     refreshLetter();
+    $("#guesses").empty();
 
 };
 
@@ -38,7 +39,7 @@ document.onkeydown = function (event) {
 
     var userGuess = event.key;
 
-    $("#guesses").text(userGuess);
+    document.getElementById("guesses").innerHTML += " " + userGuess;
 
     guessesLeft--;
     
@@ -50,9 +51,7 @@ document.onkeydown = function (event) {
         updateWins();
         reset();
 
-    };   
-
-    if (guessesLeft < 0) {
+    } else if (guessesLeft < 1) {
         alert("Oh No! You didn't guess correctly.")
         losses++;
         updateLosses();
@@ -60,5 +59,7 @@ document.onkeydown = function (event) {
     };
     
 };
+
+
 
 
